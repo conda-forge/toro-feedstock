@@ -1,8 +1,8 @@
-{%set name = "toro" %}
-{%set version = "1.0.1" %}
-{%set compress_type = "tar.gz" %}
-{%set hash_type = "sha256" %}
-{%set hash_val = "c5452e477e0d20ec459612a3be9eeed93e8dc5253423b604f73692ce628c6bc4" %}
+{% set name = "toro" %}
+{% set version = "1.0.1" %}
+{% set compress_type = "tar.gz" %}
+{% set hash_type = "sha256" %}
+{% set hash_val = "c5452e477e0d20ec459612a3be9eeed93e8dc5253423b604f73692ce628c6bc4" %}
 
 package:
   name: {{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.{{ compress_type }}
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ compress_type }}
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ compress_type }}
   {{ hash_type }}: {{ hash_val }}
 
 build:
@@ -20,9 +20,8 @@ build:
 
 requirements:
   host:
-    - pip
     - python
-    - setuptools
+    - pip
 
   run:
     - python
