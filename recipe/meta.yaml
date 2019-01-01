@@ -14,16 +14,16 @@ source:
   {{ hash_type }}: {{ hash_val }}
 
 build:
-  number: 0
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  number: 1000
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
-  build:
-    - python
-    - setuptools
-
+  host:
+    - pip
+    - python <3
   run:
-    - python
+    - python <3
     - tornado >=3
 
 test:
