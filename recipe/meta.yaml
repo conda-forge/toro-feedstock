@@ -10,23 +10,25 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.{{ compress_type }}
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ compress_type }}
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ compress_type }}
   {{ hash_type }}: {{ hash_val }}
 
 build:
-  number: 1000
+  number: 1001
   noarch: python
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
     - pip
-    - python <3
+    - python {{ python_min }}
   run:
-    - python <3
+    - python >={{ python_min }},<3
     - tornado >=3
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - toro
 
